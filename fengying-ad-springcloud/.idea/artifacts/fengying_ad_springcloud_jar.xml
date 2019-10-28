@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="fengying-ad-springcloud:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/fengying_ad_springcloud_jar</output-path>
+    <root id="archive" name="fengying-ad-springcloud.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/ad-eureka/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="fengying-ad-springcloud" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.16.18/lombok-1.16.18.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
