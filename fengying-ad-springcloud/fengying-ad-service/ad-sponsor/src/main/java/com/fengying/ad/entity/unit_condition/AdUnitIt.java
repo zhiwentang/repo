@@ -1,6 +1,5 @@
 package com.fengying.ad.entity.unit_condition;
 
-import com.fengying.ad.entity.AdUnit;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
