@@ -39,7 +39,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
         if(!adUser.isPresent()){
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
-        AdPlan oldPlan=adPlanRepository.findByUserIDAndPlanName(request.getUserId(),request.getPlanName());
+        AdPlan oldPlan=adPlanRepository.findByUserIdAndPlanName(request.getUserId(),request.getPlanName());
         if(oldPlan!=null){
             throw new AdException(Constants.ErrorMsg.SAME_NAME_PLAN_ERROR);
         }

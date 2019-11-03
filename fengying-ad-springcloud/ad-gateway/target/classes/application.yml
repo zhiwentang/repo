@@ -9,3 +9,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://server1:8000/eureka/
+
+zuul:
+  prefix: /imooc
+  routes:
+    sponsor:
+      #*代表0到多个任意字符  ？代表一个字符  **代表支持多级目录
+      path: /ad-sponsor/**
+      #微服务名字
+      serviceId: ad-sponsor
+      #guolv前缀，建议false，就是我们访问比如127.0.0.1：9000/imooc/ad-sponsor/**下时
+      #它转发的实际上的url去掉了ad-sponsor 这样会报错(404)因为ad-sponsor中配置了必须要ad-sponsor的context-path
+      stripPrefix: false

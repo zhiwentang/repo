@@ -13,7 +13,7 @@ public interface AdPlanRepository extends JpaRepository<AdPlan,Long> {
 
     List<AdPlan> findAllByIdInAndUserId(List<Long> ids,Long userId);
 
-    AdPlan findByUserIDAndPlanName(Long userId,String planName);
+    AdPlan findByUserIdAndPlanName(Long userId,String planName);
 
-    List<AdPlan> findAllByPlanstatus(Integer status);
+    List<AdPlan> findAllByPlanStatus(Integer status);
 }

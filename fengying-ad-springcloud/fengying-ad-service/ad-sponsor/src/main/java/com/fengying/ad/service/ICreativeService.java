@@ -6,6 +6,5 @@ import com.fengying.ad.vo.CreativeRequest;
 import com.fengying.ad.vo.CreativeResponse;
 
 public interface ICreativeService {
-
     CreativeResponse createCreative(CreativeRequest request) throws AdException;
 }
