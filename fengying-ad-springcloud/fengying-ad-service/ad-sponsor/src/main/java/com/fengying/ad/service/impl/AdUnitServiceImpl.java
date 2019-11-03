@@ -3,14 +3,17 @@ package com.fengying.ad.service.impl;
 import com.fengying.ad.constant.Constants;
 import com.fengying.ad.dao.AdPlanRepository;
 import com.fengying.ad.dao.AdUnitRepository;
+import com.fengying.ad.dao.CreativeRepository;
 import com.fengying.ad.dao.unit_condition.AdUnitDistrictRepository;
 import com.fengying.ad.dao.unit_condition.AdUnitItRepository;
 import com.fengying.ad.dao.unit_condition.AdUnitKeywordRepository;
+import com.fengying.ad.dao.unit_condition.CreativeUnitRepository;
 import com.fengying.ad.entity.AdPlan;
 import com.fengying.ad.entity.AdUnit;
 import com.fengying.ad.entity.unit_condition.AdUnitDistrict;
 import com.fengying.ad.entity.unit_condition.AdUnitIt;
 import com.fengying.ad.entity.unit_condition.AdUnitKeyword;
+import com.fengying.ad.entity.unit_condition.CreativeUnit;
 import com.fengying.ad.exception.AdException;
 import com.fengying.ad.service.IAdUnitService;
 import com.fengying.ad.vo.*;
@@ -25,6 +28,11 @@ import java.util.stream.Collectors;
 public class AdUnitServiceImpl implements IAdUnitService {
     @Autowired
     private AdPlanRepository adPlanRepository;
+
+    @Autowired
+    private CreativeRepository creativeRepository;
+    @Autowired
+    private CreativeUnitRepository creativeUnitRepository;
 
     @Autowired
     private AdUnitKeywordRepository adUnitKeywordRepository;
@@ -115,11 +123,36 @@ public class AdUnitServiceImpl implements IAdUnitService {
         return new AdUnitDistrictResponse(ids);
     }
 
+    @Override
+    public CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request) throws AdException {
+        List<Long> unitIds = request.getUnitItems().stream()
+                .map(CreativeUnitRequest.CreativeUnitItem::getUnitId)
+                .collect(Collectors.toList());
+        List<Long> creativeIds = request.getUnitItems().stream()
+                .map(CreativeUnitRequest.CreativeUnitItem::getCreativeId)
+                .collect(Collectors.toList());
+        if(!(isRelatedUnitExist(unitIds)&&isRelatedCreativeExist(creativeIds))){
+            throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
+        }
+        List<CreativeUnit> creativeUnits=new ArrayList<>();
+        request.getUnitItems().forEach(i->creativeUnits.add(new CreativeUnit(i.getCreativeId(),i.getUnitId())));
+        List<Long> ids=creativeUnitRepository.saveAll(creativeUnits).stream().map(CreativeUnit::getId).collect(Collectors.toList());
+
+        return new CreativeUnitResponse(ids);
+    }
+
     private boolean isRelatedUnitExist(List<Long> ids){
         if(CollectionUtils.isEmpty(ids)){
             return false;
         }
         return adUnitRepository.findAllById(ids).size()==new HashSet<>(ids).size();
+    }
+
+    private boolean isRelatedCreativeExist(List<Long> ids){
+        if(CollectionUtils.isEmpty(ids)){
+            return false;
+        }
+        return creativeRepository.findAllById(ids).size()==new HashSet<>(ids).size();
     }
 
 
