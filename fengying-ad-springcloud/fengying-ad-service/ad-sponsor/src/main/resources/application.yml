@@ -20,7 +20,7 @@ spring:
 server:
   port: 7000
   servlet:
-    context-path: /a d-sponsor
+    context-path: /ad-sponsor
 
 eureka:
   client:

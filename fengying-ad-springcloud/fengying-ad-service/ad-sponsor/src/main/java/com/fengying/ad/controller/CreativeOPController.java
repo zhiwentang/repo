@@ -24,5 +24,4 @@ public class CreativeOPController {
         return iCreativeService.createCreative(request);
     }
 
-
 }
