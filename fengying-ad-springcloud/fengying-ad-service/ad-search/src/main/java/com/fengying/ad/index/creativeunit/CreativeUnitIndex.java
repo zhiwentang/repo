@@ -50,7 +50,6 @@ public class CreativeUnitIndex implements indexAware<String,CreativeUnitObject> 
         }
         creativeSet.add((value.getAdId()));
         log.info("after add:{}",objectMap);
-
     }
 
     @Override
