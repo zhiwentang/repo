@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class AdPlanTable {
 
-    private Long planId;
+    private Long id;
     private Long userId;
     private Integer planStatus;
     private Date startDate;
