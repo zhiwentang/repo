@@ -11,4 +11,14 @@ public class CommonUtils {
         return map.computeIfAbsent(key, k -> factory.get());
     }
 
+    public static String stringConcat(String... args){
+        StringBuilder sb=new StringBuilder();
+        for(String s:args){
+            sb.append(s);
+            sb.append("-");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        return sb.toString();
+    }
+
 }
