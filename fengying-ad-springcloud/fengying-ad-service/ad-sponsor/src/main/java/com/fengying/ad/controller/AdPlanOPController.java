@@ -42,7 +42,7 @@ public class AdPlanOPController {
     }
 
     //删除推广计划
-    @DeleteMapping
+    @DeleteMapping("/delete/adPlan")
     public void deleteAdPlan(@RequestBody AdPlanRequest request) throws AdException{
         log.info("ad-sponsor:deleteAdPlan->{}",JSON.toJSONString(request));
         iAdPlanService.deleteAdPlan(request);

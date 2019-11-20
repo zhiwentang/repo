@@ -20,10 +20,10 @@ import com.fengying.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+//增量索引服务类
 @Slf4j
 public class AdLeveLDataHandler {
 
@@ -166,8 +166,6 @@ public class AdLeveLDataHandler {
                 type
         );
     }
-
-
 
 
     private static <K, V> void handleBinlogEvent(indexAware<K,V> index, K key, V value, OpType type){

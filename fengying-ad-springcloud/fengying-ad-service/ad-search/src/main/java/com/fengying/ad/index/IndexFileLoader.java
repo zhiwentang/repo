@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//将索引从文件中加载到内存
 @Component
 @DependsOn("dateTable")
 public class IndexFileLoader {
@@ -68,7 +69,6 @@ public class IndexFileLoader {
         adUnitItStrings.forEach(p->AdLeveLDataHandler.handlerLevel4(
                 JSON.parseObject(p,AdUnitItTable.class),OpType.ADD
         ));
-
 
     }
 
