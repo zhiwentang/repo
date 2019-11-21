@@ -12,6 +12,7 @@ public class BinlogServiceTest {
         BinaryLogClient client=new BinaryLogClient(
                 "127.0.0.1",3306,"root","tzw4587429"
         );
+        client.setBinlogFilename("L1WWITAFW5IVTNG-bin.000022");
         client.registerEventListener(event -> {
             EventData data=event.getData();
             if(data instanceof UpdateRowsEventData){
