@@ -21,7 +21,7 @@ import java.util.Map;
 @Component
 public class IncrementListener implements Ilistener {
 
-    @Resource(name = "kafkaSender")
+    @Resource(name = "indexSender")
     private ISender sender;
 
     private final AggregationListener aggregationListener;
@@ -62,20 +62,14 @@ public class IncrementListener implements Ilistener {
         }
 
         for (Map<String, String> afterMap : eventData.getAfter()) {
-
             Map<String, String> _afterMap = new HashMap<>();
-
             for (Map.Entry<String, String> entry : afterMap.entrySet()) {
-
                 String colName = entry.getKey();
                 String colValue = entry.getValue();
-
                 _afterMap.put(colName, colValue);
             }
-
             rowData.getFieldValueMap().add(_afterMap);
         }
-
         sender.sender(rowData);
     }
 }
