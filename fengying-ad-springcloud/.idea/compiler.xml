@@ -13,12 +13,14 @@
         <module name="ad-eureka" />
         <module name="springboot-study" />
         <module name="ad-sponsor" />
+        <module name="ad-dashboard" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ad-common" options="-parameters" />
+      <module name="ad-dashboard" options="-parameters" />
       <module name="ad-eureka" options="-parameters" />
       <module name="ad-gateway" options="-parameters" />
       <module name="ad-search" options="-parameters" />

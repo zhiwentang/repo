@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ad-dashboard
+
+server:
+  port: 7002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server1:8000/eureka/
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: "*"
+
+
