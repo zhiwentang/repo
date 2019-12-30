@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -55,8 +56,14 @@ public class AdPlanServiceImpl implements IAdPlanService {
         if(!request.validate()){
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
-
-        return adPlanRepository.findAllByIdInAndUserId(request.getIds(),request.getUserId());
+        List<AdPlan> resultPlan=adPlanRepository.findAllByIdInAndUserId(request.getIds(),request.getUserId());
+        List<AdPlan> result=new ArrayList<AdPlan>();
+        for (AdPlan adPlan : resultPlan) {
+            if(adPlan.getPlanStatus().equals(1)){
+                result.add(adPlan);
+            }
+        }
+        return result;
     }
 
     @Override

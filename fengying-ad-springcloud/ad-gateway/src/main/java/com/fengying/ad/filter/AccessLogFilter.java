@@ -36,7 +36,6 @@ public class AccessLogFilter extends ZuulFilter {
         String url = request.getRequestURI();
         long duration = System.currentTimeMillis() - startTime;
         log.info("url:" + url + ",duration" + duration / 100 + "ms");
-
         return null;
     }
 }

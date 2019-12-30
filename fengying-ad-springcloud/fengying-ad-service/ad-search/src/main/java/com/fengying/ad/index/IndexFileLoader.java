@@ -72,7 +72,7 @@ public class IndexFileLoader {
 
     }
 
-    private List<String>loadDumpData(String filename){
+    private List<String> loadDumpData(String filename){
 
         try (BufferedReader br= Files.newBufferedReader(Paths.get(filename));){
             return br.lines().collect(Collectors.toList());

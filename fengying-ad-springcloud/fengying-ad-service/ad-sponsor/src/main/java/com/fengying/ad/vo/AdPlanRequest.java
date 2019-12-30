@@ -17,9 +17,9 @@ public class AdPlanRequest {
 
     public boolean createValidate() {
         return userId != null &&
-                StringUtils.isEmpty(planName) &&
-                StringUtils.isEmpty(startDate) &&
-                StringUtils.isEmpty(endDate);
+                !StringUtils.isEmpty(planName) &&
+                !StringUtils.isEmpty(startDate) &&
+                !StringUtils.isEmpty(endDate);
     }
 
     public boolean updateValidate() {
